@@ -1,3 +1,5 @@
+
+
 library iso_countries;
 
 import 'dart:async';
@@ -15,7 +17,7 @@ class IsoCountries {
   /// Function to get the country data in English
   static Future<List<Country>> get iso_countries async {
     final List<Country> isoCountries = [];
-    final List countries = await _channel.invokeMethod('getISOCountries');
+    final List countries = await (_channel.invokeMethod('getISOCountries') as FutureOr<List<Map<String, String>>>);
     // Parse
     for (final countryMap in countries) {
       final country = Country(
@@ -29,8 +31,8 @@ class IsoCountries {
   static Future<List<Country>> iso_countries_for_locale(
       locale_identifier) async {
     final List<Country> isoCountries = [];
-    final List countries = await _channel.invokeMethod(
-        'getISOCountriesForLocale', {'locale_identifier': locale_identifier});
+    final List countries = await (_channel.invokeMethod(
+        'getISOCountriesForLocale', {'locale_identifier': locale_identifier}) as FutureOr<List<Map<String, String>>>);
     // Parse
     for (final countryMap in countries) {
       final country = Country(

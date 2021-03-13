@@ -4,8 +4,8 @@ import 'package:flutter/foundation.dart';
 class Country {
   /// Instantiates an [Country] with the specified [name], and [countryCode]
   const Country({
-    @required this.name,
-    @required this.countryCode,
+    required this.name,
+    required this.countryCode,
   });
 
   /// the 2-letter ISO code
